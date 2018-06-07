@@ -9,6 +9,8 @@ public class Main {
 		//ReadFile ReadFile = new ReadFile(args[0]);
 		//System.out.print(ReadFile);
 		ConnectToCassandra ctc = new ConnectToCassandra(args[0], args[1]);
+		ctc.readToCassandra();
+		//SparkToCassandra stc = new SparkToCassandra();
 	}
 
 }
