@@ -20,10 +20,10 @@ public class ConnectToCassandra {
 	}
 	
 	public void readToCassandra() {
-		String cqlStatement = "SELECT * FROM campaign2_unido";
+		String cqlStatement = "select * from campaign2_unido where ad_group_id = 48151831374";
 		for (Row row : session.execute(cqlStatement)) {
-		  System.out.println(row.toString());
-		}
+			System.out.println(row.toString());
+		} 
 	}
 	
 }
