@@ -15,8 +15,9 @@ public class Main {
 	      
 	      try {
 	         //Class.forName("org.postgresql.Driver");
-	         ConnectToPostgre c = new ConnectToPostgre("192.168.1.36");
-	         
+	         ConnectToPostgre c = new ConnectToPostgre(args[0]);
+	         System.out.println(c.readToPostgre("SELECT * FROM public.keyword_data;"));
+	        
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	         System.err.println(e.getClass().getName()+": "+e.getMessage());

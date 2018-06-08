@@ -2,14 +2,16 @@ package code;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
-import com.datastax.driver.core.Session;
+
 
 public class ConnectToPostgre {
 	
-	Session session;
+
 	Connection conn;
 	
 	
@@ -28,6 +30,23 @@ public class ConnectToPostgre {
 		props.setProperty("ssl","false");
 		conn = DriverManager.getConnection(url, props);
 
+		
+	}
+	
+	public String readToPostgre(String consulta) throws SQLException {
+		
+        String Result = null;
+ 
+        try (   Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(consulta)) {
+            rs.next();
+            Result = rs.getString(1);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return Result;
+		
 		
 	}
 
