@@ -7,6 +7,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 
 
@@ -39,7 +40,11 @@ public class ConnectToPostgre {
 	public ArrayList<String> readToPostgre(String consulta) throws SQLException{
 		     
 		stm = conn.createStatement();
+		
+		Date startDate = new Date();
 		ResultSet rs = stm.executeQuery(consulta);
+		Date endDate = new Date();
+		
 		ResultSetMetaData rsm = rs.getMetaData(); 
 		ArrayList<String> Array = new ArrayList<String>();
 		String row;
@@ -50,11 +55,15 @@ public class ConnectToPostgre {
 			
 			for ( int i=1; i < (rsm.getColumnCount()+1);i++) {
 				
-				row = row + rs.getString(i);
+				row = row + " , " + rs.getString(i);
 				
 			}
+			
 			Array.add(row);
 		}
+		
+		int msElapsedTime = (int) (endDate.getTime() - startDate.getTime());
+		Array.add(Integer.toString(msElapsedTime));
 		
 		stm.close();
 		rs.close();

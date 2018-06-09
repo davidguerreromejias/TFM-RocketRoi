@@ -12,11 +12,12 @@ public class Main {
 		ctc.readToCassandra();*/
 		//SparkToCassandra stc = new SparkToCassandra();
 		
+		String Consulta = "SELECT * FROM public.keyword_data as kd left join public.keyword as k on kd.keyword_id = k.id and kd.ad_group_id = k.ad_group_id where kd.ad_group_id = 48151831374;";
 	      
 	      try {
 	         //Class.forName("org.postgresql.Driver");
 	         ConnectToPostgre c = new ConnectToPostgre(args[0]);
-	         c.readToPostgre("SELECT * FROM public.keyword;").forEach(System.out::println);
+	         c.readToPostgre(Consulta).forEach(System.out::println);
 	        
 	      } catch (Exception e) {
 	         e.printStackTrace();
