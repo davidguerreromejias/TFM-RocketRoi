@@ -13,6 +13,7 @@ public class ConnectToPostgre {
 	
 
 	Connection conn;
+	Statement stm;
 	
 	
 	public ConnectToPostgre(String ip) throws SQLException, ClassNotFoundException {
@@ -33,19 +34,34 @@ public class ConnectToPostgre {
 		
 	}
 	
-	public String readToPostgre(String consulta) throws SQLException {
+	public String readToPostgre(String consulta) throws SQLException{
+		     
+		stm = conn.createStatement();
+		ResultSet rs = stm.executeQuery(consulta);
+		String Keyword = null;
 		
-        String Result = null;
+		while (rs.next()){
+			Keyword = rs.toString();
+		}
+		
+		return Keyword;
+
+            //System.out.println(ex.getMessage());
+        
+		
+		/*        String Result = null;
  
         try (   Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(consulta)) {
             rs.next();
             Result = rs.getString(1);
+            return Result;
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        	return ex.getMessage();
+            //System.out.println(ex.getMessage());
+        }*/
         
-        return Result;
+        
 		
 		
 	}
