@@ -16,7 +16,7 @@ public class Main {
 	      try {
 	         //Class.forName("org.postgresql.Driver");
 	         ConnectToPostgre c = new ConnectToPostgre(args[0]);
-	         System.out.println(c.readToPostgre("SELECT keyword_text FROM public.keyword;"));
+	         c.readToPostgre("SELECT * FROM public.keyword;").forEach(System.out::println);
 	        
 	      } catch (Exception e) {
 	         e.printStackTrace();

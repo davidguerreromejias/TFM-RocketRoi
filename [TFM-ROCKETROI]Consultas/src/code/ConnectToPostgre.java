@@ -3,6 +3,7 @@ package code;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -39,11 +40,20 @@ public class ConnectToPostgre {
 		     
 		stm = conn.createStatement();
 		ResultSet rs = stm.executeQuery(consulta);
-		
+		ResultSetMetaData rsm = rs.getMetaData(); 
 		ArrayList<String> Array = new ArrayList<String>();
+		String row;
 		
 		while (rs.next()){
-			Array.add(rs.getString(1));
+			
+			row = null;
+			
+			for ( int i=1; i < (rsm.getColumnCount()+1);i++) {
+				
+				row = row + rs.getString(i);
+				
+			}
+			Array.add(row);
 		}
 		
 		stm.close();
@@ -51,21 +61,7 @@ public class ConnectToPostgre {
 		conn.close();
 		return Array;
 
-            //System.out.println(ex.getMessage());
-        
-		
-		/*        String Result = null;
- 
-        try (   Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(consulta)) {
-            rs.next();
-            Result = rs.getString(1);
-            return Result;
-        } catch (SQLException ex) {
-        	return ex.getMessage();
-            //System.out.println(ex.getMessage());
-        }*/
-        
+     
         
 		
 		
