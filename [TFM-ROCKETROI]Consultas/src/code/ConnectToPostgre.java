@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 
@@ -34,17 +35,21 @@ public class ConnectToPostgre {
 		
 	}
 	
-	public String readToPostgre(String consulta) throws SQLException{
+	public ArrayList<String> readToPostgre(String consulta) throws SQLException{
 		     
 		stm = conn.createStatement();
 		ResultSet rs = stm.executeQuery(consulta);
-		String Keyword = null;
+		
+		ArrayList<String> Array = new ArrayList<String>();
 		
 		while (rs.next()){
-			Keyword = rs.toString();
+			Array.add(rs.getString(1));
 		}
 		
-		return Keyword;
+		stm.close();
+		rs.close();
+		conn.close();
+		return Array;
 
             //System.out.println(ex.getMessage());
         
