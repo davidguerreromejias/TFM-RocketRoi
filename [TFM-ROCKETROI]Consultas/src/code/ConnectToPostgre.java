@@ -33,13 +33,13 @@ public class ConnectToPostgre {
 		props.setProperty("password",Password);
 		props.setProperty("ssl","false");
 		conn = DriverManager.getConnection(url, props);
-
+		stm = conn.createStatement();
 		
 	}
 	
 	public ArrayList<String> readToPostgre(String consulta) throws SQLException{
 		     
-		stm = conn.createStatement();
+		
 		
 		Date startDate = new Date();
 		ResultSet rs = stm.executeQuery(consulta);
