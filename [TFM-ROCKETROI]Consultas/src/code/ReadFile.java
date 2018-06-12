@@ -24,7 +24,7 @@ public class ReadFile {
         	
         }
         this.Data = Array;
-        //System.out.print(Data.get(0));
+        //System.out.print(Data.get(3)[1]);
         scanner.close();
     }
 	

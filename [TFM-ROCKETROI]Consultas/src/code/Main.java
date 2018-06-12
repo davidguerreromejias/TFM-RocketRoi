@@ -6,8 +6,22 @@ public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		ReadFile ReadFile = new ReadFile(args[0]);
-		System.out.print(ReadFile);
+		/*ReadFile ReadFile = new ReadFile(args[0]);
+		System.out.print(ReadFile);*/
+		
+		CreateData d =  new CreateData(args[0]);
+		//long j = 10000000000L;
+		
+		for (int i = 1; i< d.getNewData().size(); i++){
+			/*long j = Long.parseLong(d.getNewData().get(i)[1]);
+			System.out.print(Long.toString(j)+";");*/
+			System.out.print(d.getNewData().get(i)[1]+";");
+			for (int j =0; j <(d.getNewData()).get(i).length; j++){
+				
+				//System.out.print(d.getNewData().get(i)[j]+";");
+			}
+		}
+		
 		/*ConnectToCassandra ctc = new ConnectToCassandra(args[0], args[1]);
 		ctc.importToCassandra();*/
 		//SparkToCassandra stc = new SparkToCassandra();
