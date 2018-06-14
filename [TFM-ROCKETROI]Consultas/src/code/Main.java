@@ -1,6 +1,9 @@
 package code;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+import org.apache.cassandra.thrift.Cassandra.AsyncProcessor.system_add_column_family;
 
 public class Main {
 
@@ -10,17 +13,20 @@ public class Main {
 		System.out.print(ReadFile);*/
 		
 		CreateData d =  new CreateData(args[0]);
-		//long j = 10000000000L;
+		//ArrayList<String[]> a = d.getNewData();
 		
-		for (int i = 1; i< d.getNewData().size(); i++){
-			/*long j = Long.parseLong(d.getNewData().get(i)[1]);
-			System.out.print(Long.toString(j)+";");*/
-			System.out.print(d.getNewData().get(i)[1]+";");
-			for (int j =0; j <(d.getNewData()).get(i).length; j++){
-				
-				//System.out.print(d.getNewData().get(i)[j]+";");
-			}
+		/*for (int i = 1; i< a.size(); i++){
+			
+			System.out.print(a.get(i)[1]+";");
+			
+		}*/
+		
+		String[] s =d.getNewDataAd(7);
+		
+		for (int i=0; i<s.length; i++){
+			System.out.println(s[i]+";");
 		}
+		
 		
 		/*ConnectToCassandra ctc = new ConnectToCassandra(args[0], args[1]);
 		ctc.importToCassandra();*/
