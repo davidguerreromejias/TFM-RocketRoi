@@ -67,7 +67,7 @@ public class ConnectToPostgre {
 		
 		stm.close();
 		rs.close();
-		conn.close();
+		//conn.close();
 		return Array;
 
      

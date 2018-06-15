@@ -24,10 +24,10 @@ public class Main {
 		
 		String[] s =d.getNewDataAd(3, "C:\\Users\\Aleix Che\\TFM\\Prueba 2_0\\Sequencia.csv");
 		
-		for (int i=0; i<s.length; i++){
+		/*for (int i=0; i<s.length; i++){
 			System.out.println(s[i]+";");
 			
-		}
+		}*/
 		
 		
 		/*ConnectToCassandra ctc = new ConnectToCassandra(args[0], args[1]);

@@ -22,7 +22,7 @@ public class CreateData {
 	
 	public ArrayList<String[]> getNewData(){
 		
-		ArrayList<String[]> Result = new ArrayList<String[]>(Data);
+		/*ArrayList<String[]> Result = new ArrayList<String[]>(Data);
 		long multiplie = 10000000000L;
 		//Result.set(0,Data.get(0));
 		//Result = Data;
@@ -44,7 +44,8 @@ public class CreateData {
 			//}
 		}
 		
-		return Result;
+		return Result;*/
+		return Data;
 	}
 	
 
@@ -115,15 +116,14 @@ public class CreateData {
 		fileWriter = new FileWriter(Path);
 		String NEW_LINE_SEPARATOR = "\n";
 		
+		fileWriter.append(String.valueOf("ad_group_id"));
+		fileWriter.append(NEW_LINE_SEPARATOR);
+		
 		for (int i=0; i<array.length; i++) {
 			
-			if (i==0){
-				fileWriter.append(String.valueOf("ad_group_id"));
-				fileWriter.append(NEW_LINE_SEPARATOR);
-			}else{
-				fileWriter.append(String.valueOf(array[i]));
-				fileWriter.append(NEW_LINE_SEPARATOR);
-			}
+			fileWriter.append(String.valueOf(array[i]));
+			fileWriter.append(NEW_LINE_SEPARATOR);
+			
 			
 		}
 		
