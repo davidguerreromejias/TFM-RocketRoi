@@ -1,7 +1,11 @@
 package code;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CreateData {
 	
@@ -44,15 +48,33 @@ public class CreateData {
 	}
 	
 
-	public String[] getNewDataAd(int iterations){
+	public String[] getNewDataAd(int iterations, String Path) throws IOException{
 		
 		//ArrayList<String[]> Result = new ArrayList<String[]>(Data);
-	
+		Scanner scanner = new Scanner(new File(Path));
+        scanner.useDelimiter("\n");
+        ArrayList<String> Array = new ArrayList<String>();
+        
+        while(scanner.hasNext()){
+        	//System.out.print(scanner.nextLine()+"|");
+            //System.out.print(scanner.next()+"|");
+        	Array.add(scanner.next().replace("\n", "").replace("\r", ""));
+        	
+        }
+        
+        String [] original= new String[Array.size()-1];
+        
+        for (int i = 0; i< original.length; i++){
+        	
+        	original[i]= Array.get(i+1);
+        	
+        }
+        //System.out.println(original);
 		long sumi = 10000000000L;
-		int datasize = Data.size();
-		String[] original = new String [(datasize-1)];
+		/*int datasize = Data.size();
+		String[] original = new String [(datasize-1)];*/
 		
-		for(int i=1; i<datasize; i++){
+		/*for(int i=1; i<datasize; i++){
 			
 			//for(int j=0; j < Data.get(i).length; j++){
 				original[i-1] = Data.get(i)[1];
@@ -60,21 +82,53 @@ public class CreateData {
 				
 				
 			//}
-		}
+		}*/
 		String[] newdata = new String [original.length*iterations];
 		
 		int index =0;
+		int index2=0;
+		String[] Savearray = new String[original.length];
 		while(index< newdata.length){
 			for(int i=0; i<original.length;i++){
 				
 				original[i] = Long.toString(Long.parseLong(original[i]) + sumi);
 				newdata[index]=original[i];
+				if(index>=original.length*(iterations-1) || iterations == 1 ){
+					
+					Savearray[index2] = original[i];
+					index2++;
+					
+				}
 				index++;
 			}
 			
 		}
 		
+		WriteCSV(Savearray, "C:\\Users\\Aleix Che\\TFM\\Prueba 2_0\\Sequencia2.csv");
 		return newdata;
+		
+	}
+	
+	public void WriteCSV(String[] array, String Path) throws IOException{
+		
+		FileWriter fileWriter = null;
+		fileWriter = new FileWriter(Path);
+		String NEW_LINE_SEPARATOR = "\n";
+		
+		for (int i=0; i<array.length; i++) {
+			
+			if (i==0){
+				fileWriter.append(String.valueOf("ad_group_id"));
+				fileWriter.append(NEW_LINE_SEPARATOR);
+			}else{
+				fileWriter.append(String.valueOf(array[i]));
+				fileWriter.append(NEW_LINE_SEPARATOR);
+			}
+			
+		}
+		
+		fileWriter.close();
+
 	}
 
 }

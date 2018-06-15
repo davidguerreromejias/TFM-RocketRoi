@@ -1,13 +1,14 @@
 package code;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.cassandra.thrift.Cassandra.AsyncProcessor.system_add_column_family;
 
 public class Main {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 		
 		/*ReadFile ReadFile = new ReadFile(args[0]);
 		System.out.print(ReadFile);*/
@@ -21,10 +22,11 @@ public class Main {
 			
 		}*/
 		
-		String[] s =d.getNewDataAd(7);
+		String[] s =d.getNewDataAd(3, "C:\\Users\\Aleix Che\\TFM\\Prueba 2_0\\Sequencia.csv");
 		
 		for (int i=0; i<s.length; i++){
 			System.out.println(s[i]+";");
+			
 		}
 		
 		
