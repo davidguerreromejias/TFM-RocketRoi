@@ -2,6 +2,7 @@ package code;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class ConnectToPostgre {
 	public ConnectToPostgre(String ip) throws SQLException, ClassNotFoundException {
 		// TODO Auto-generated constructor stub
 		String User = "postgres";
-		String Password = "lasalle18";
+		String Password = "postgres";
 		String db = "postgres";
 		String Port = "5432";
 		Class.forName("org.postgresql.Driver");
@@ -72,6 +73,25 @@ public class ConnectToPostgre {
 
      
         
+		
+		
+	}
+	
+
+public void writeToPostgre(String consulta) throws SQLException{
+		     
+		
+		
+		Date startDate = new Date();
+		PreparedStatement st = conn.prepareStatement(consulta);
+		st.executeUpdate();
+		st.close();
+		//stm.executeQuery(consulta);
+		Date endDate = new Date();
+		
+
+		int msElapsedTime = (int) (endDate.getTime() - startDate.getTime());
+	  
 		
 		
 	}
