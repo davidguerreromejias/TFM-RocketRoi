@@ -42,7 +42,7 @@ public class Main {
 		
 		
 		
-		//////////////////////////////REALIZAR CONSULTA A POSTGRE//////////////////////////////////////////////
+		//////////////////////////////REALIZAR CONSULTA DE LECTURA A POSTGRE//////////////////////////////////////////////
 		
 		
 		/*String Consulta = "SELECT * FROM public.keyword_data as kd left join public.keyword as k on kd.keyword_id = k.id and kd.ad_group_id = k.ad_group_id where kd.ad_group_id = 48151831374;";
@@ -59,6 +59,10 @@ public class Main {
 	      }
 	      System.out.println("Opened database successfully");*/
 	   
+		
+		
+		
+//////////////////////////////REALIZAR CONSULTA DE ESCRITURA A POSTGRE//////////////////////////////////////////////
 			String table = "public.keyword";
 			int dataindex=1;
 	      
