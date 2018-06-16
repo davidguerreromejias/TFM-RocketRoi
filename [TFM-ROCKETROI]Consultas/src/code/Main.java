@@ -10,19 +10,15 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		
-		/*ReadFile ReadFile = new ReadFile(args[0]);
-		System.out.print(ReadFile);*/
 		
-		CreateData d =  new CreateData(args[0]);
-		//ArrayList<String[]> a = d.getNewData();
+		String allColumnsPath = args[0]+"\\keyword 2_1.csv";
+		String AdGroupPath = args[0]+"\\Sequencia.csv";
+		System.out.println(allColumnsPath);
 		
-		/*for (int i = 1; i< a.size(); i++){
-			
-			System.out.print(a.get(i)[1]+";");
-			
-		}*/
+		CreateData d =  new CreateData(allColumnsPath);
+		
 		ArrayList<String[]> g = d.getNewData();
-		String[] s =d.getNewDataAd(3, "C:\\Users\\Aleix Che\\TFM\\Prueba 2_1\\Sequencia.csv");
+		String[] s =d.getNewDataAd(3, AdGroupPath);
 		
 		/*for (int i=0; i<s.length; i++){
 			System.out.println(s[i]+";");
