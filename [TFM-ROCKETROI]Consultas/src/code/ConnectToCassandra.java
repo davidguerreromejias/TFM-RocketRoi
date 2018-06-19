@@ -2,10 +2,12 @@ package code;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Date;
 import java.util.Scanner;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ProtocolVersion;
+import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 import com.datastax.driver.core.policies.RetryPolicy;
@@ -28,11 +30,19 @@ public class ConnectToCassandra {
 		session = cluster.connect(keyspace);
 	}
 	
-	public void readToCassandra() {
-		String cqlStatement = "select * from accountid_campaign_id";
-		for (Row row : session.execute(cqlStatement)) {
-			System.out.println(row.toString());
-		} 
+	public void readToCassandra(String cqlStatement, Boolean verConsulta) {
+		Date startDate = new Date();
+		ResultSet rs = session.execute(cqlStatement);
+		Date endDate = new Date();
+		if(verConsulta) {
+			for (Row row : rs) {
+				System.out.println(row.toString());
+			} 
+		}
+		
+		int msElapsedTime = (int) (endDate.getTime() - startDate.getTime());
+		System.out.println("Time of execution "+ msElapsedTime+" ms");
+		
 	}
 	
 	public void importToCassandra(String cqlStatement) throws FileNotFoundException{

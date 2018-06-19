@@ -105,7 +105,7 @@ public class CreateData {
 			
 		}
 		
-		WriteCSV(Savearray, "C:\\Users\\Aleix Che\\TFM\\Pruebas\\Sequencia2.csv");
+		WriteCSV(Savearray, "/Users/laperlablancaIV/Documents/javaCassandra/Sequencia2.csv");
 		return newdata;
 		
 	}
