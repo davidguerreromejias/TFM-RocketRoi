@@ -16,18 +16,18 @@ public class Main {
 		String AdGroupPath = args[0]+"/Sequencia.csv";
 		System.out.println(allColumnsPath);
 		
-		//CreateData d =  new CreateData(allColumnsPath);
+		CreateData d =  new CreateData(allColumnsPath);
 		
-		//ArrayList<String[]> g = d.getNewData();
-		//System.out.println(g.size());
-		//String[] s =d.getNewDataAd(5, AdGroupPath);
+		ArrayList<String[]> g = d.getNewData();
+		System.out.println(g.size());
+		String[] s =d.getNewDataAd(5, AdGroupPath);
 		
 		
 		ConnectToCassandra ctc = new ConnectToCassandra(args[2], "campaign_unido");
 		String table = "campaign2_unido";
 		int dataindex=1;
 		
-		/*Date startDate = new Date();
+		Date startDate = new Date();
 		System.out.println(s.length);
         for( int i=0; i <s.length; i++){
 	    	  
@@ -46,12 +46,12 @@ public class Main {
         int msElapsedTime = (int) (endDate.getTime() - startDate.getTime());
         ctc.closeCassandra();
         //ctc.session.close();
-        System.out.println("Inserted Succesfully in "+ msElapsedTime+" ms");*/
+        System.out.println("Inserted Succesfully in "+ msElapsedTime+" ms");
 		
         //////////////////////////////REALIZAR CONSULTA DE LECTURA A CASSANDRA//////////////////////////////////////////////
-        String cqlStatement = "select * from campaign_unido.campaign2_unido where ad_group_id = 48151831374;";
+        /*String cqlStatement = "select * from campaign_unido.campaign2_unido where ad_group_id = 48151831374;";
         Boolean verConsulta = true;
-        ctc.readToCassandra(cqlStatement, verConsulta);
+        ctc.readToCassandra(cqlStatement, verConsulta);*/
 		
 		//////////////////////////////REALIZAR CONSULTA DE LECTURA A POSTGRE//////////////////////////////////////////////
 		
